@@ -1,3 +1,4 @@
+<pre>
 // BeaconMAN
 // Matt Perkins - Copyright (C) 2024 
 // This is a quick and somewhat nasty php program to monitor the Beacons at the VK2WI Radio station. 
