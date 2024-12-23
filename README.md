@@ -25,4 +25,27 @@
 Dependences: 
 rtl_power 
 php5.6 
+php-mysql-lib 5.6 
+mysql 
+
+
+
+DB schema
+<pre> 
+CREATE TABLE beacon.beacons (
+    `sequence` INTEGER NOT NULL,
+    `call` varchar(6) NULL,
+    description varchar(32) NULL,
+    start_freq FLOAT NULL,
+    end_freq float NULL,
+    sample_width float NULL,
+    tx_type varchar(32) NULL
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;
+CREATE INDEX beacons_sequence_IDX USING BTREE ON beacon.beacons (`sequence`);
+
+
+
 
