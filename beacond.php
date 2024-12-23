@@ -67,8 +67,7 @@ while($row != $rows){
 
 
 	$query = "INSERT INTO  beacon_history values (\"$seq\",\"$datetime\",\"$db_av\");";
-	// test Size / value 
-	//$x_result = mysql_query($query); 
+	$x_result = mysql_query($query); 
 	$row = $row + 1; 
 }
 

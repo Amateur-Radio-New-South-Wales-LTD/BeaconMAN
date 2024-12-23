@@ -33,7 +33,7 @@ while($row != $rows){
        if($tx_status == "FAULT"){
 	       echo "<tr><td>$call</td><td>$description</td><td>$last_update</td><td bgcolor = \"#ff0000\" >$tx_status</td></tr>"; 
        }else{
-	       echo "<tr><td>$call</td><td>$description</td><td>$last_update</td><td bgcolor = \"#00ff00\" >$tx_status</td></tr>"; 
+	       echo "<tr><td>$call</td><td>$description</td><td>$last_update</td><td bgcolor = \"#00ff00\" ></td></tr>"; 
 	}
        $row = $row + 1; 
 }
