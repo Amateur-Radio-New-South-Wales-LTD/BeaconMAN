@@ -1,6 +1,6 @@
 <pre>
 // BeaconMAN
-// Matt Perkins - Copyright (C) 2024 
+// Matt Perkins VK2FLY - Copyright (C) 2024 
 // This is a quick and somewhat nasty php program to monitor the Beacons at the VK2WI Radio station. 
 // It uses the rtl_power package to sample segments of the band and  then compare output power. 
 
