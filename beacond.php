@@ -15,7 +15,13 @@ $row = 0;
 echo "Loaded $rows transmitters to scan.\n"; 
 
 while(1){ 
-	
+
+// Power cycle the SDR. 
+echo "Power SDR OFF/";
+system("$power_cmd >/dev/null"); 
+sleep(1); 
+echo "ON\n";
+
 $row = 0; 
 while($row != $rows){
 	$seq = mysql_result($result,$row,"sequence"); 
@@ -70,6 +76,9 @@ while($row != $rows){
 	$x_result = mysql_query($query); 
 	$row = $row + 1; 
 }
-
+if($pause_time){
+	echo "sleeping $pause_time\n"; 
+	sleep($pause_time); 
+	}
 }
 ?>
