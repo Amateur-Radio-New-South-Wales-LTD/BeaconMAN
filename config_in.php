@@ -7,3 +7,5 @@ $sample_time = 5;
 $offset = 0; 
 $pause_time = 60;
 $power_cmd = "uhubctl --search RTL2838UHIDIR   -a 2"; 
+$exec_timeout =10;
+
