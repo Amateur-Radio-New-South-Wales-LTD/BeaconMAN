@@ -83,10 +83,10 @@ while($row != $rows){
 	$x_result = mysql_query($query); 
 	$row = $row + 1; 
 }
-if($pause_time){
-	echo "sleeping $pause_time\n"; 
-	sleep($pause_time); 
-	}
+
+echo "sleeping with radio off.\n"; 
+system($pause_time_cmd); 
+
 }
 
 
