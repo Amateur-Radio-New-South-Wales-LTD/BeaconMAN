@@ -1,5 +1,5 @@
 <?php
-$version = "1.0";
+$version = "1.1";
 $tmpdir = "/tmp"; 
 $rtl_power = "/usr/bin/rtl_power"; 
 $sql_password = "753a651b6211"; 

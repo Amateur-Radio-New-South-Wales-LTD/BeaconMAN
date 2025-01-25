@@ -16,11 +16,6 @@ echo "Loaded $rows transmitters to scan.\n";
 
 while(1){ 
 
-// Power cycle the SDR. 
-echo "Power SDR OFF/";
-system("$power_cmd >/dev/null"); 
-sleep(1); 
-echo "ON\n";
 
 $row = 0; 
 while($row != $rows){
@@ -32,12 +27,14 @@ while($row != $rows){
 	$sample_width = mysql_result($result,$row,"sample_width"); 
 	$tx_type = mysql_result($result,$row,"tx_type"); 
 	$threshold = mysql_result($result,$row,"threshold"); 
+	power_sdr(); 
 	$cmdbuf = "timeout $exec_timeout $rtl_power -i $sample_time -f $start_freq:$end_freq:$sample_width -1 - 2>/dev/null "; 
 	$data = shell_exec($cmdbuf); 
 	$data = trim($data); 
 	$pwr_result = explode(",",$data); 
 	$srows =0 ; 
 	$srows = count($pwr_result); 
+	echo "Sample rows  $srows\n"; 
 	if($srows == 0){ 
 		echo "Bad result from SDR\n"; 
 		break; 
@@ -47,6 +44,10 @@ while($row != $rows){
 	while ($srows != $srow){ 
 		$db_total = $db_total + $pwr_result[$srow];
 		$srow = $srow + 1; 
+		if($srow >255){
+			echo "values exceed 30 - break\n"; 
+			break;
+		};
 	}
 	$db_av = $db_total / ($srows -6);
 	$db_av = $db_av + $offset;
@@ -86,5 +87,16 @@ if($pause_time){
 	echo "sleeping $pause_time\n"; 
 	sleep($pause_time); 
 	}
+}
+
+
+// Power cycle the SDR. 
+function power_sdr() { 
+	include 'config_in.php';
+	echo "Power SDR OFF/";
+	system("$power_cmd >/dev/null"); 
+	sleep(1); 
+	echo "ON\n";
+
 }
 ?>
