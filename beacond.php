@@ -94,7 +94,15 @@ system($pause_time_cmd);
 function power_sdr() { 
 	include 'config_in.php';
 	echo "Power SDR OFF/";
-	system("$power_cmd >/dev/null"); 
+	$cmdbuf = "$power_cmd 2>&1"; 
+	$data = shell_exec($cmdbuf); 
+	$data = trim($data); 
+	if(strstr($data,"No compatible devices detected")){
+		echo "SDR Not found\n"; 
+		system($shutdown_cmd); 
+		echo "Waiting for restart to recover USB"; 
+		exit(); 
+	}
 	sleep(1); 
 	echo "ON\n";
 

@@ -8,4 +8,5 @@ $offset = 0;
 $pause_time_cmd = "uhubctl --search RTL2838UHIDIR -a 2 -d 60 >/dev/null 2>/dev/null ";
 $power_cmd = "uhubctl --search RTL2838UHIDIR -a 2 -d 5"; 
 $exec_timeout =10;
+$shutdown_cmd = "/usr/sbin/shutdown -r +90 restart-usb";
 
